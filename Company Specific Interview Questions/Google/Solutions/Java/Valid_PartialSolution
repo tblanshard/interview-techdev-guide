@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+
+public class Parenthesis {
+
+	public static void main(String[] args) {
+		String parenthesis = "(())()(()";
+		//create a new ArrayList of type Integer to create a stack object
+		ArrayList<Integer> stack = new ArrayList<Integer>();
+		
+		//initialise a variable result to store the longest valid parenthesis substring - set to 0 to begin with
+		int result = 0;
+		
+		//create a for loop that iterates through each character in the parenthesis string
+		for (int i = 0; i < parenthesis.length(); i++) {
+			//if the character currently being studied is the opening bracket
+			//add the index to the stack
+			if (parenthesis.charAt(i) == '(') {
+				stack.add(i);
+			}
+			//otherwise, remove the top item from the stack
+			else {
+				stack.remove(stack.size() - 1);
+				//if the stack not empty
+				//compare the current 'result' value to the difference between the current index and the top item on the stack
+				//set the result to be the largest value of the two
+				if (stack.size() != 0) {
+					result = Math.max(result, i-(stack.get(stack.size() - 1)));
+				}
+				//otherwise, if the stack is empty, add the current index to the stack to provide something to compare future
+				//parenthesis to
+				else {
+					stack.add(i);
+				}
+			}
+		}
+		//because we have been looking at the number of valid pairs, we need to multiply the number of pairs by two
+		//to get the length of the valid parenthesis substring
+		result *= 2;
+		System.out.println(result);
+	}
+
+}
