@@ -12,13 +12,16 @@ public class Queue {
 		System.out.println("The item could not be found.");
 		return -1;
 	}
-	
+
 	public static void main(String[] args) {
-  //test
-  queue.add(5);
-  queue.add(2);
-  queue.add(10);
-  queue.add(1);
-  findItemLinear(queue, 10);
+  		//test
+		
+		ArrayList<Integer> queue = new ArrayList<Integer>();
+		
+  		queue.add(5);
+  		queue.add(2);
+  		queue.add(10);
+  		queue.add(1);
+  		findItemLinear(queue, 10);
 	}
 }
